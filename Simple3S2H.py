@@ -24,7 +24,7 @@ class Simple3S2H( Topo ):
 
         # Add links
         self.addLink( h1, s1 )
-        self.addLink( s2, s2 )
+        self.addLink( s1, s2 )
         self.addLink( s2, s3 )
         self.addLink( s3, h2 )
 

@@ -5,7 +5,7 @@
 
 from mininet.topo import Topo
 
-class Simple3S2H( Topo ):
+class Simple3S3H( Topo ):
     "Simple topology example."
 
     def __init__( self ):
@@ -17,6 +17,7 @@ class Simple3S2H( Topo ):
         # Add hosts and switches
         h1 = self.addHost( 'h1' )
         h2 = self.addHost( 'h2' )
+        h3 = self.addHost( 'h3' )
 
         s1 = self.addSwitch( 's1' )
         s2 = self.addSwitch( 's2' )
@@ -24,8 +25,11 @@ class Simple3S2H( Topo ):
 
         # Add links
         self.addLink( h1, s1 )
-        self.addLink( s2, s2 )
-        self.addLink( s2, s3 )
-        self.addLink( s3, h2 )
+        self.addLink( h2, s2 )
+        self.addLink( h3, s3 )
 
-topos = { 'mytopo': ( lambda: Simple3S2H() ) }
+        self.addLink( s1, s2 )
+        self.addLink( s2, s3 )
+        self.addLink( s3, s1 )
+
+topos = { 'mytopo': ( lambda: Simple3S3H() ) }
